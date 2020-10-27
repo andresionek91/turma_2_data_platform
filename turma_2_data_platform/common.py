@@ -56,7 +56,7 @@ class Common(core.Stack):
                 self,
                 f'rds-{self.env}-replication-subnet',
                 description='place RDS on private subnet',
-                vpc=self.custom_vp
+                vpc=self.custom_vpc
             ),
             security_groups=[
                 self.orders_rds_sg
