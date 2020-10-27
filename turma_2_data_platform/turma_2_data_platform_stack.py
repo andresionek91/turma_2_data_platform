@@ -43,7 +43,7 @@ class DataLakeDatabase(glue.Database):
         )
 
 
-class Turma2DataPlatformStack(core.Stack):
+class DataLake(core.Stack):
 
     def __init__(self, scope: core.Construct, environment: Environment, **kwargs) -> None:
         self.env = environment
