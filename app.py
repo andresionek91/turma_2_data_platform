@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 
 from aws_cdk import core
-
+from common import Environment
 from turma_2_data_platform.turma_2_data_platform_stack import Turma2DataPlatformStack
+import os
 
+environment = Environment[os.environ['ENVIRONMENT']]
 
 app = core.App()
-Turma2DataPlatformStack(app, "turma-2-data-platform")
-
+Turma2DataPlatformStack(app, environment=environment)
 app.synth()
