@@ -44,12 +44,12 @@ class Common(core.Stack):
 
         self.orders_rds = rds.DatabaseInstance(
             self,
-            f'orders-{self.env}-rds',
+            f'orders-{self.env}-rds-1',
             engine=rds.DatabaseInstanceEngine.POSTGRES,
             database_name='orders',
             instance_type=ec2.InstanceType('t3.micro'),
             vpc=self.custom_vpc,
-            instance_identifier=f'rds-{self.env}-orders-db',
+            instance_identifier=f'rds-{self.env}-orders-db-1',
             port=5432,
             vpc_placement=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
             subnet_group=rds.SubnetGroup(
