@@ -17,7 +17,8 @@ class EMRTransform(core.Stack):
         self.logs_bucket = s3.Bucket(
             self,
             f'{self.env}-emr-logs-bucket',
-            bucket_name=f's3-belisco-{self.env}-emr-logs-bucket'
+            bucket_name=f's3-belisco-{self.env}-emr-logs-bucket',
+            removal_policy=core.RemovalPolicy.DESTROY
         )
 
         self.emr_role = iam.Role(
