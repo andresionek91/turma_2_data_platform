@@ -8,31 +8,29 @@ dsn = 'dbname={dbname} ' \
       'user={user} ' \
       'password={password} ' \
       'port={port} ' \
-      'host={host} '.format(dbname='trans',
-                            user=os.environ['username'],
+      'host={host} '.format(dbname='orders',
+                            user=os.environ['user'],
                             password=os.environ['password'],
                             port=5432,
-                            host='rds-production-orders-db-1.cc09atoorz2x.us-east-1.rds.amazonaws.com')
-
+                            host=os.environ['host'])
 
 conn = psycopg2.connect(dsn)
-print('conectado')
+print('connected')
 conn.set_session(autocommit=True)
 cur = conn.cursor()
 cur.execute('create table if not exists orders('
             'created_at timestamp,'
-            'order_id varchar(64),'
-            'product_name varchar(100)'
+            'order_id integer,'
+            'product_name varchar(100),'
             'value float);')
 
 products = {'casa': 500000.00, 'carro': 69900.00, 'moto': 7900.00, 'caminhao': 230000.00, 'laranja': 0.5, 'borracha': 0.3, 'iphone': 1000000.00}
 idx = 0
 
 while True:
+    print(idx)
     idx += 1
-    created_at = datetime.now().strftime('%Y-%m-%d %H-%M-%S.%f')
+    created_at = datetime.now().isoformat()
     product_name, value = choice(list(products.items()))
-    sql = f'insert into orders values ({created_at}, {idx}, {product_name}, {value})'
-    print(sql)
-    cur.execute(sql)
+    cur.execute(f"insert into orders values ('{created_at}', {idx}, '{product_name}', {value})")
     time.sleep(0.5)
