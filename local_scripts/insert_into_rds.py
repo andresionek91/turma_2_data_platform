@@ -12,7 +12,7 @@ dsn = 'dbname={dbname} ' \
                             user=os.environ['username'],
                             password=os.environ['password'],
                             port=5432,
-                            host=os.environ['host'])
+                            host='rds-production-orders-db-1.cc09atoorz2x.us-east-1.rds.amazonaws.com')
 
 
 conn = psycopg2.connect(dsn)
