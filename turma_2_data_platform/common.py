@@ -49,7 +49,7 @@ class Common(core.Stack):
             database_name='orders',
             instance_type=ec2.InstanceType('t3.micro'),
             vpc=self.custom_vpc,
-            instance_identifier=f'rds-{self.env}-orders-db-1',
+            instance_identifier=f'rds-{self.env}-orders-db',
             port=5432,
             vpc_placement=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
             subnet_group=rds.SubnetGroup(
