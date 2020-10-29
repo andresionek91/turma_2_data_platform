@@ -44,7 +44,7 @@ class Common(core.Stack):
 
         self.orders_rds = rds.DatabaseInstance(
             self,
-            f'orders-{self.env}-rds-1',
+            f'orders-{self.env}-rds',
             engine=rds.DatabaseInstanceEngine.postgres(version=rds.PostgresEngineVersion.VER_11_2),
             database_name='orders',
             instance_type=ec2.InstanceType('t3.micro'),
