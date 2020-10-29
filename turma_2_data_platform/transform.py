@@ -68,7 +68,7 @@ class EMRTransform(core.Stack):
                     name='Core'
                 ),
                 termination_protected=True,
-                ec2_subnet_ids=[subnet.subnet_id for subnet in common.custom_vpc.private_subnets]
+                ec2_subnet_id=common.custom_vpc.private_subnets[0].subnet_id
             ),
             applications=[
                 emr.CfnCluster.ApplicationProperty(name='Spark')
